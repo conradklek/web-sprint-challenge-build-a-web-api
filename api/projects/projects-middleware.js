@@ -13,18 +13,14 @@ async function postValidator(req, res, next) {
     } catch (err) {
         console.log(err)
         res.status(500).json({ message: 'Failed to validate project' })
-    }
+    } 
 }
 async function putValidator(req, res, next) {
     const { name, description, completed } = req.body
-    try {
-        if (!name || !description || !completed) {
-            res.status(400).json({ message: 'Missing required fields' })
-        }
+    if (name && description && completed) {
         next()
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({ message: 'Failed to validate project' })
+    } else {
+        res.status(400).json({ message: 'Missing required fields' })
     }
 }
 

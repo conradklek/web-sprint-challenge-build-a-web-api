@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Projects = require('./projects-model')
 
-const { projectsLogger, postValidator } = require('../projects/projects-middleware')
+const { projectsLogger, postValidator, putValidator } = require('../projects/projects-middleware')
 
 router.get('/', projectsLogger, (req, res) => {
     Projects.get()
@@ -50,14 +50,14 @@ router.put('/:id', (req, res) => {
     Projects.update(id, changes)
         .then(project => {
             if (project) {
-                res.status(200).json(project)
+                res.status(400).json(project)
             } else {
                 res.status(404).json({ message: 'Could not find project with given id' })
             }
         })
         .catch(err => {
             console.log(err)
-            res.status(500).json({ message: 'Failed to update project' })
+            res.status(400).json({ message: 'Failed to update project' })
         })
 })
 
