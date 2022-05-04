@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(500).json({ message: 'Failed to get actions' })
+            res.status(400).json({ message: 'Failed to get actions' })
         })
 })
 
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(500).json({ message: 'Failed to get action' })
+            res.status(400).json({ message: 'Failed to get action' })
         })
 })
 
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(500).json({ message: 'Failed to add action' })
+            res.status(400).json({ message: 'Failed to add action' })
         })
 })
 
@@ -55,7 +55,7 @@ router.put('/:id', (req, res) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(500).json({ message: 'Failed to update action' })
+            res.status(400).json({ message: 'Failed to update action' })
         })
 })
 
@@ -71,7 +71,7 @@ router.delete('/:id', (req, res) => {
         })
         .catch(err => {
             console.log(err)
-            res.status(500).json({ message: 'Failed to delete action' })
+            res.status(400).json({ message: 'Failed to delete action' })
         })
 })
 
